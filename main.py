@@ -11,7 +11,7 @@ mnist = tf.keras.datasets.mnist
 
 x_train = tf.keras.utils.normalize(x_train, axis=1)
 x_test = tf.keras.utils.normalize(x_test, axis=1)
-
+'''
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten(input_shape=(28, 28))) 
 "Flatten turns out a grid to a single line (instead of 28*28 matrix yu have a line of 7800 line)"
@@ -28,3 +28,11 @@ model.fit(x_train, y_train, epochs = 3)
 "How many times the model will loop thru a single unit data"
 
 model.save('Handwritten model')
+'''
+
+model = tf.keras.models.load_model('handwritten model')
+
+loss, accuracy = model.evaluate(x_test, y_test)
+
+print(loss)
+print(accuracy)
